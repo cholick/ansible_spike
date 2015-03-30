@@ -20,3 +20,6 @@
     dest=/usr/local/share/emacs/site-lisp/default.el
     mode=0644 owner=root group=root
   sudo: yes
+
+- hostname: name={{ hostname }}
+  sudo: yes
