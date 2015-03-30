@@ -1,0 +1,6 @@
+.vagrant
+
+*.pyc
+
+*.iml
+.idea

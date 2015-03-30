@@ -1,0 +1,21 @@
+---
+- name: update cache
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
+
+- name: install common packages
+  apt: pkg={{ item }} state=present
+  sudo: yes
+  with_items:
+    - emacs23-nox
+    - curl
+    - wget
+    - htop
+    - iotop
+    - iftop
+
+- copy: >
+    src=../files/default.el
+    dest=/usr/local/share/emacs/site-lisp/default.el
+    mode=0644 owner=root group=root
+  sudo: yes

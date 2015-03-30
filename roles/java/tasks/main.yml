@@ -1,0 +1,11 @@
+---
+
+  - name: Check java
+    shell: java -version || echo "undefined"
+    register: java_version
+    changed_when: False
+
+  - name: Run install script
+    script: ../files/install_jdk.sh
+    sudo: yes
+    when: "'Java HotSpot' not in java_version.stderr or '1.8' not in java_version.stderr"
