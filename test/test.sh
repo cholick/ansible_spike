@@ -24,7 +24,7 @@ fi
 
 vagrant up
 
-ansible-playbook -i ../environments/dev/inventory ../server.yml
+ansible-playbook -i ../environments/dev/inventory ../site.yml
 
 if [ "$1" == "--full" ]; then
     ansible-playbook -i hosts ../server.yml \

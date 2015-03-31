@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars_files:
-    - "{{ env }}/group_vars/all.yml"
+    - "{{ env }}/host_vars/site_vm.yml"
   roles:
     - common
     - java
