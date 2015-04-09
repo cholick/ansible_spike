@@ -5,7 +5,7 @@ green='\033[1;32m'
 clear='\033[0m'
 
 function usage() {
-  echo "usage:
+    echo "usage:
     $0 [--full] [--help]
     Flags:
       --full    Start from a fresh vagrant box & test idempotence
@@ -15,11 +15,11 @@ function usage() {
 }
 
 if [ "$1" == "--help" ]; then
-  usage;
+    usage;
 fi
 
 if [ "$1" == "--full" ]; then
-  vagrant destroy --force
+    vagrant destroy --force
 fi
 
 vagrant up
@@ -27,7 +27,7 @@ vagrant up
 ansible-playbook -i ../environments/dev/inventory ../site.yml
 
 if [ "$1" == "--full" ]; then
-    ansible-playbook -i hosts ../server.yml \
+    ansible-playbook -i hosts ../site.yml \
         | grep -qE "changed=0\s+unreachable=0" \
         && (echo -e "Idempotence test: ${green}pass${clear}" && exit 0) \
         || (echo -e "Idempotence test: ${red}fail${clear}" && exit 1)
